@@ -1,0 +1,30 @@
+<input type="text" [(ngModel)]="searchText" placeholder="Search by Employee Name" />
+<hr>
+
+<table id="myTable" border="1" width="100%">
+    <thead>
+        <tr>
+            <th scope="col">Emp ID</th>
+            <th scope="col">Employee Name</th>
+            <th scope="col">Employee Email</th>
+            <th scope="col">Employee Location</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <!-- <tr *ngFor="let employee of employees | searchEmployee: {empId: searchText, empName:searchText, email: searchText, location: searchText};let i = index"> -->
+        <tr *ngFor="let employee of (employees | searchEmployee: searchText);let i = index">
+            <th scope=" row">{{employee.empId}}</th>
+            <td>{{employee.empName}}</td>
+            <td>{{employee.email}}</td>
+            <td>{{employee.location}}</td>
+            <td>
+                <button type="text" [routerLink]="['/update', employee.empId]">UPDATE</button>
+            </td>
+        </tr>
+    </tbody>
+
+
+
+</table>
